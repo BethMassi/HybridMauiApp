@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HybridMauiApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HybridMauiApp"
+    Shell.FlyoutBehavior="Disabled"
+    Title="HybridMauiApp">
+
+    <TabBar>
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="React"
+        ContentTemplate="{DataTemplate local:ReactPage}"
+        Route="ReactPage" />
+
+    </TabBar>
+
+</Shell>
