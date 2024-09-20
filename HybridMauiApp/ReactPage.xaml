@@ -10,7 +10,10 @@
             FontSize="32"
             HorizontalOptions="Center" />
 
-        <HybridWebView Grid.Row="1" x:Name="myHybridWebView" HybridRoot="ReactTodoApp" RawMessageReceived="myHybridWebView_RawMessageReceived" />
+        <HybridWebView Grid.Row="1" 
+                       x:Name="myHybridWebView" 
+                       HybridRoot="ReactTodoApp" 
+                       RawMessageReceived="myHybridWebView_RawMessageReceived" />
     
     </Grid>
 </ContentPage>

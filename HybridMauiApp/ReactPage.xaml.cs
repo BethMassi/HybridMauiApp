@@ -1,5 +1,4 @@
-﻿using MauiReactJSHybridApp;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace HybridMauiApp
@@ -110,6 +109,7 @@ namespace HybridMauiApp
             }
         }
 
+        // This type's attributes specify JSON serialization info to preserve type structure for trimmed builds.
         [JsonSourceGenerationOptions(WriteIndented = false)]
         [JsonSerializable(typeof(IList<TodoTask>))]
         [JsonSerializable(typeof(string))]

@@ -1,4 +1,4 @@
-﻿namespace MauiReactJSHybridApp
+﻿namespace HybridMauiApp
 {
     public class TodoTask
     {

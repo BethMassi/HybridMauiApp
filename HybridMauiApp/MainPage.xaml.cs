@@ -72,13 +72,14 @@ namespace HybridMauiApp
             public string? operationName { get; set; }
         }
 
+        // This type's attributes specify JSON serialization info to preserve type structure for trimmed builds.
         [JsonSourceGenerationOptions(WriteIndented = true)]
         [JsonSerializable(typeof(ComputationResult))]
         [JsonSerializable(typeof(double))]
         [JsonSerializable(typeof(string))]
         [JsonSerializable(typeof(Dictionary<string, string>))]
         internal partial class SampleInvokeJsContext : JsonSerializerContext
-        {
+        {            
         }
     }
 

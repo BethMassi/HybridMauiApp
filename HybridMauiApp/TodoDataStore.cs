@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace MauiReactJSHybridApp
+namespace HybridMauiApp
 {
     public class TodoDataStore
     {
