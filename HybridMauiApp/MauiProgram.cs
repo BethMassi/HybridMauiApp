@@ -16,7 +16,8 @@ namespace HybridMauiApp
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
+            builder.Services.AddHybridWebViewDeveloperTools();
 #endif
 
             return builder.Build();

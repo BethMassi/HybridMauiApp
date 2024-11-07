@@ -59,22 +59,9 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-  <ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-rc.1.24431.7" />
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.10-ci.net9.24555.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-*" />
 	</ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="ReactPage.xaml.cs">
-      <DependentUpon>ReactPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <MauiXaml Update="ReactPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </MauiXaml>
-  </ItemGroup>
 
 </Project>
