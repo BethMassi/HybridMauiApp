@@ -87,7 +87,7 @@
         }
         else {
             // Android WebView
-            hybridWebViewHost.sendMessage(messageToSend);
+            window.hybridWebViewHost.sendMessage(messageToSend);
         }
     },
 

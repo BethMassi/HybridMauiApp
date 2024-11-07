@@ -12,8 +12,7 @@
 
         <HybridWebView Grid.Row="1" 
                        x:Name="myHybridWebView" 
-                       HybridRoot="ReactTodoApp" 
-                       RawMessageReceived="myHybridWebView_RawMessageReceived" />
+                       HybridRoot="ReactTodoApp" />
     
     </Grid>
 </ContentPage>
