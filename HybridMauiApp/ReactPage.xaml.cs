@@ -18,7 +18,7 @@ namespace HybridMauiApp
             BindingContext = this;
         }
 
-        public string TodoAppTitle => $"Todo items: {_todoDataStore.GetData().Count}";
+        public string TodoAppTitle => $"Todo items: {_todoDataStore.GetData().Where(t => t.is_completed).Count()} done / {_todoDataStore.GetData().Count} total";
 
         private void OnTodoDataChanged(object? sender, EventArgs e)
         {
