@@ -8,15 +8,22 @@
     Title="HybridMauiApp">
 
     <TabBar>
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}">
+            <ShellContent.Icon>
+                <FontImageSource Glyph="&#x2302;" Size="20"/>
+            </ShellContent.Icon>
+        </ShellContent>
 
-    <ShellContent
-        Title="React"
-        ContentTemplate="{DataTemplate local:ReactPage}"
-        Route="ReactPage" />
+        <ShellContent
+            Title="React"
+            ContentTemplate="{DataTemplate local:ReactPage}"
+            Route="ReactPage">
+            <ShellContent.Icon>
+                <FontImageSource Glyph="&#x2611;" Size="20"/>
+            </ShellContent.Icon>
+        </ShellContent>
 
     </TabBar>
 

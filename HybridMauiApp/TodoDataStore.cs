@@ -4,12 +4,12 @@ namespace HybridMauiApp
 {
     public class TodoDataStore
     {
-        private readonly List<TodoTask> _taskData = new List<TodoTask>()
-        {
+        private readonly List<TodoTask> _taskData =
+        [
             new(){ id="todo-0", title="Eat", is_completed=true  },
             new(){ id="todo-1", title="Sleep", is_completed=false  },
             new(){ id="todo-2", title="Repeat", is_completed=false  },
-        };
+        ];
 
         public event EventHandler? TaskDataChanged;
 
