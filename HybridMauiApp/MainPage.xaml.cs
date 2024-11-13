@@ -24,8 +24,8 @@ namespace HybridMauiApp
             var result = await hwv.InvokeJavaScriptAsync<ComputationResult>(
                 "AddNumbers",
                 SampleInvokeJsContext.Default.ComputationResult,
-                new object?[] { x, null, y, null },
-                new[] { SampleInvokeJsContext.Default.Double, null, SampleInvokeJsContext.Default.Double, null });
+                [x, null, y, null],
+                [SampleInvokeJsContext.Default.Double, null, SampleInvokeJsContext.Default.Double, null]);
 
             if (result is null)
             {
@@ -46,8 +46,8 @@ namespace HybridMauiApp
             var asyncFuncResult = await hwv.InvokeJavaScriptAsync<Dictionary<string, string>>(
                 "EvaluateMeWithParamsAndAsyncReturn",
                 SampleInvokeJsContext.Default.DictionaryStringString,
-                new object?[] { "new_key", "new_value" },
-                new[] { SampleInvokeJsContext.Default.String, SampleInvokeJsContext.Default.String });
+                ["new_key", "new_value"],
+                [SampleInvokeJsContext.Default.String, SampleInvokeJsContext.Default.String]);
 
             if (asyncFuncResult == null)
             {
