@@ -21,7 +21,7 @@ This app shows the .NET MAUI 9 HybridWebView control in two scenarios:
    * For the React part of the code:
       * Clone the https://github.com/Eilon/create-a-todo-app-with-React repo
       * Open it in Visual Studio Code and make any changes you want
-      * From a shell/command window run `yarn install` (just once) to ensure you have all the dependencies, and then `npm run build` to generate the output
+      * From a shell/command window run `npm install` (just once) to ensure you have all the dependencies, and then `npx next build` to generate the output
       * Delete the contents of the [HybridMauiApp/Resources/Raw/ReactTodoApp](HybridMauiApp/Resources/Raw/ReactTodoApp) folder and replace it with the output of the `out` folder of the React app you just built
 
 ## .NET Conf 2024 video
