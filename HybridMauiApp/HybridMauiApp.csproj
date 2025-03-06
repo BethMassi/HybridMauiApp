@@ -61,11 +61,15 @@
 
 	<ItemGroup>
     <!-- Release: -->
-		<!-- <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" /> -->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" /> 
 		<!-- Nightly: (See Nuget.config in root of this solution for feed)-->  
-    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.*-*" />
+     <!--<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.*-*" />--> 
 		
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Raw\NewReactToDo\" />
 	</ItemGroup>
 
 </Project>

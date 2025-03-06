@@ -24,6 +24,16 @@
                 Clicked="SendMessageButton_Clicked" />
 
             <Button
+                 Margin="10"
+                 Text="Invoke JS w/ null return"
+                 Clicked="InvokeJSNullMethodButton_Clicked" />
+
+            <Button
+                Margin="10"
+                Text="Call external API from JS"
+                Clicked="InvokeJSApiMethodButton_Clicked" />
+
+            <Button
                 Margin="10"
                 Text="Invoke JS"
                 Clicked="InvokeJSMethodButton_Clicked" />

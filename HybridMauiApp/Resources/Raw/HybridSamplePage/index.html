@@ -12,16 +12,46 @@
         window.addEventListener(
             "HybridWebViewMessageReceived",
             function (e) {
-                var messageFromCSharp = document.getElementById("messageFromCSharp");
-                messageFromCSharp.value += '\r\n' + e.detail.message;
+                DisplayMessage(e.detail.message);
             });
+
+        function DisplayMessage(msg) {
+            var messageFromCSharp = document.getElementById("messageFromCSharp");
+            messageFromCSharp.value += '\r\n' + msg;
+        }
 
         function AddNumbers(a, x, b, y) {
             var result = {
                 "result": a + b,
                 "operationName": "Addition"
-            };
-            return result;
+            };            
+            return result;            
+        }
+
+        // Testing https://github.com/dotnet/maui/pull/27094
+        function SendAlert(msg) {
+            window.alert(msg);
+            DisplayMessage(msg);
+            return undefined;
+        }
+
+        async function CallApiAsync() {
+            var apiUrl = "https://restcountries.com/v3.1/name/aruba";
+          
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            var jsonData = await response.json();
+            var msg = "API call returned: " + JSON.stringify(jsonData).substring(0, 100) + "...";
+            window.HybridWebView.SendRawMessage(msg);     
+
+            return jsonData;
+        }
+
+        async function InvokeDotnetAdd() {
+            var result = await window.HybridWebView.InvokeDotNet("AddNumbers", [1, 2]) ;
+            DisplayMessage('Result from C#: ' + result);
         }
 
         var count = 0;
@@ -48,6 +78,7 @@
     </div>
     <div>
         <button onclick="window.HybridWebView.SendRawMessage('Message from JS! ' + (count++))">Send message to C#</button>
+        <button onclick="InvokeDotnetAdd()">Invoke C# Add function</button> 
     </div>
     <div>
         Message from C#: <textarea readonly id="messageFromCSharp" style="width: 80%; height: 10em;"></textarea>

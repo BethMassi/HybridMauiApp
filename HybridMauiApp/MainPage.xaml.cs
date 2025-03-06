@@ -7,13 +7,32 @@ namespace HybridMauiApp
         public MainPage()
         {
             InitializeComponent();
+
+            // Set the class that defines the methods that can be invoked from JavaScript.
+            hwv.SetInvokeJavaScriptTarget<ComputeJSInvokeTarget>(new ComputeJSInvokeTarget(this));          
+  
         }
 
         int count;
         private void SendMessageButton_Clicked(object sender, EventArgs e)
         {
-            hwv.SendRawMessage($"Hello from C#! #{count++}");
+            hwv.SendRawMessage($"Hello from C#! #{count++}");            
         }
+
+        private void InvokeJSNullMethodButton_Clicked(object sender, EventArgs e)
+        {
+            // Testing https://github.com/dotnet/maui/pull/27094
+            hwv.InvokeJavaScriptAsync<string>("SendAlert", 
+                null, //will not throw an exception in .NET 9 SR4 (9.0.40)
+                [$"Hello from C#! #{count++}"], 
+                [SampleInvokeJsContext.Default.String]);
+        }
+
+        private void InvokeJSApiMethodButton_Clicked(object sender, EventArgs e)
+        {
+            hwv.InvokeJavaScriptAsync<string>("CallApiAsync", null);                
+        }
+        
 
         private async void InvokeJSMethodButton_Clicked(object sender, EventArgs e)
         {
@@ -21,6 +40,7 @@ namespace HybridMauiApp
 
             var x = 123d;
             var y = 321d;
+            
             var result = await hwv.InvokeJavaScriptAsync<ComputationResult>(
                 "AddNumbers",
                 SampleInvokeJsContext.Default.ComputationResult,
@@ -79,8 +99,32 @@ namespace HybridMauiApp
         [JsonSerializable(typeof(string))]
         [JsonSerializable(typeof(Dictionary<string, string>))]
         internal partial class SampleInvokeJsContext : JsonSerializerContext
-        {            
+        {
         }
+
+
+        /// <summary>
+        /// This class defines the methods that can be invoked from JavaScript.
+        /// </summary>
+        private sealed class ComputeJSInvokeTarget
+        {
+            private MainPage _mainPage;            
+
+            public ComputeJSInvokeTarget(MainPage mainPage)
+            {
+                _mainPage = mainPage;                
+            }
+
+            public int AddNumbers(int number1, int number2)
+            {
+                var result = number1 + number2;
+
+                _mainPage.Dispatcher.Dispatch(() => _mainPage.statusText.Text += Environment.NewLine + $"Got number {result}");
+                return result;
+            }
+
+        }
+
     }
 
 }
